@@ -35,6 +35,7 @@ brews:
   - repository:
       owner: gtn1024
       name: homebrew-tap
+      token: "{{ .Env.HOMEBREW_TAP_TOKEN }}"
     directory: Formula
     homepage: "https://github.com/gtn1024/traceme"
     description: "Local activity logger: periodic screenshots → Vision LLM → JSONL"
