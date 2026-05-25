@@ -12,8 +12,16 @@
 
 ## 安装
 
+需要 Go 1.22+：
+
 ```bash
-go build -o traceme ./cmd/traceme
+go install github.com/gtn1024/traceme/cmd/traceme@latest
+```
+
+## 更新
+
+```bash
+go install github.com/gtn1024/traceme/cmd/traceme@latest
 ```
 
 ## 使用
