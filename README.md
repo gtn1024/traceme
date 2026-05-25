@@ -12,6 +12,15 @@
 
 ## 安装
 
+### Homebrew（macOS）
+
+```bash
+brew tap gtn1024/tap
+brew install traceme
+```
+
+### 从源码构建
+
 需要 Go 1.22+：
 
 ```bash
@@ -21,7 +30,7 @@ go install github.com/gtn1024/traceme/cmd/traceme@latest
 ## 更新
 
 ```bash
-go install github.com/gtn1024/traceme/cmd/traceme@latest
+brew upgrade traceme
 traceme restart
 ```
 
