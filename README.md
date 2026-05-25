@@ -1,5 +1,7 @@
 # traceme
 
+> Inspired by [2026 南京大学 "操作系统原理" (蒋炎岩)](https://jyywiki.cn/OS/2026/)
+
 本地活动记录工具。定时截屏，调用 OpenAI-compatible 视觉模型，把"我刚才在做什么"写成 JSONL。
 
 ## 核心闭环
