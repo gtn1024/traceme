@@ -10,6 +10,13 @@
 
 截图是中间产物，不保存。
 
+## 支持平台
+
+| 平台 | 截屏 | 开机自启 |
+|------|------|----------|
+| macOS | `screencapture` | launchd |
+| Windows | PowerShell | Task Scheduler |
+
 ## 安装
 
 ### Homebrew（macOS）
@@ -18,6 +25,17 @@
 brew tap gtn1024/tap
 brew install traceme
 ```
+
+### Scoop（Windows）
+
+```powershell
+scoop bucket add traceme https://github.com/gtn1024/scoop-bucket
+scoop install traceme
+```
+
+### 从 GitHub Releases 下载（Windows）
+
+从 [Releases](https://github.com/gtn1024/traceme/releases) 页面下载对应的 `.zip` 文件，解压后将 `traceme.exe` 放入 `PATH`。
 
 ### 从源码构建
 
@@ -29,8 +47,17 @@ go install github.com/gtn1024/traceme/cmd/traceme@latest
 
 ## 更新
 
+macOS:
+
 ```bash
 brew upgrade traceme
+traceme restart
+```
+
+Windows:
+
+```powershell
+scoop update traceme
 traceme restart
 ```
 
@@ -47,10 +74,12 @@ traceme daily-prompt # 导出日报 prompt
 ## 开机自启
 
 ```bash
-traceme install     # 注册为 launchd 服务，开机自启 + 崩溃自动重启
+traceme install     # 注册为系统服务，开机自启 + 崩溃自动重启
 traceme uninstall   # 卸载服务
 traceme restart     # 重启服务（更新后执行）
 ```
+
+macOS 使用 launchd，Windows 使用 Task Scheduler。
 
 ## 配置
 

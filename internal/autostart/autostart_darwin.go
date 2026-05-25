@@ -1,4 +1,6 @@
-package launchd
+//go:build darwin
+
+package autostart
 
 import (
 	"fmt"
@@ -30,6 +32,7 @@ func generatePlist() (string, error) {
 		return "", err
 	}
 
+	home, _ := os.UserHomeDir()
 	return fmt.Sprintf(`<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -50,12 +53,7 @@ func generatePlist() (string, error) {
     <key>StandardOutPath</key>
     <string>%s/.traceme/traceme.out.log</string>
 </dict>
-</plist>`, label, bin, homeDir(), homeDir()), nil
-}
-
-func homeDir() string {
-	home, _ := os.UserHomeDir()
-	return home
+</plist>`, label, bin, home, home), nil
 }
 
 func Install() error {

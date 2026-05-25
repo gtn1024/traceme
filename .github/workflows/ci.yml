@@ -1,0 +1,46 @@
+name: CI
+
+on: [pull_request, push]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: Build
+        run: go build ./cmd/traceme
+
+      - name: Vet
+        run: go vet ./...
+
+  autostart-test:
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: Build traceme
+        run: go build -o traceme ./cmd/traceme
+
+      - name: Install service
+        run: ./traceme install
+
+      - name: Restart service
+        run: ./traceme restart
+
+      - name: Uninstall service
+        run: ./traceme uninstall

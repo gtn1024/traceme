@@ -7,6 +7,7 @@ builds:
       - CGO_ENABLED=0
     goos:
       - darwin
+      - windows
     goarch:
       - amd64
       - arm64
@@ -14,12 +15,18 @@ builds:
       - -s -w -X main.version={{.Version}}
 
 archives:
-  - format: tar.gz
+  - id: tarball
+    format: tar.gz
     name_template: >-
       {{ .ProjectName }}_
       {{- .Version }}_
       {{- .Os }}_
       {{- .Arch }}
+    builds_info:
+      group: binary
+    format_overrides:
+      - goos: windows
+        format: zip
 
 checksum:
   name_template: "checksums.txt"
@@ -44,3 +51,12 @@ brews:
       bin.install "traceme"
     test: |
       system "#{bin}/traceme", "version"
+
+scoops:
+  - repository:
+      owner: gtn1024
+      name: scoop-bucket
+    token: "{{ .Env.SCOOP_BUCKET_TOKEN }}"
+    homepage: "https://github.com/gtn1024/traceme"
+    description: "Local activity logger: periodic screenshots → Vision LLM → JSONL"
+    license: MIT

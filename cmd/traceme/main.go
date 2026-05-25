@@ -11,7 +11,7 @@ import (
 	"time"
 
 	"github.com/gtn1024/traceme/internal/config"
-	"github.com/gtn1024/traceme/internal/launchd"
+	"github.com/gtn1024/traceme/internal/autostart"
 	"github.com/gtn1024/traceme/internal/llm"
 	"github.com/gtn1024/traceme/internal/screenshot"
 	"github.com/gtn1024/traceme/internal/storage"
@@ -199,25 +199,25 @@ var dailyPromptCmd = &cobra.Command{
 
 var installCmd = &cobra.Command{
 	Use:   "install",
-	Short: "Install traceme as a launchd service",
+	Short: "Install traceme as a background service",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		return launchd.Install()
+		return autostart.Install()
 	},
 }
 
 var uninstallCmd = &cobra.Command{
 	Use:   "uninstall",
-	Short: "Uninstall the launchd service",
+	Short: "Uninstall the background service",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		return launchd.Uninstall()
+		return autostart.Uninstall()
 	},
 }
 
 var restartCmd = &cobra.Command{
 	Use:   "restart",
-	Short: "Restart the launchd service (use after updating)",
+	Short: "Restart the background service (use after updating)",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		return launchd.Restart()
+		return autostart.Restart()
 	},
 }
 
