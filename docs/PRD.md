@@ -216,6 +216,14 @@ traceme daily-prompt
 
 输出一段可复制给 GPT / DeepSeek 的总结 prompt。
 
+### 服务管理
+
+```bash
+traceme install     # 注册 launchd 服务（开机自启 + 崩溃重启）
+traceme uninstall   # 卸载 launchd 服务
+traceme restart     # 重启服务（更新二进制后执行）
+```
+
 ---
 
 ## 9. 配置文件
@@ -294,10 +302,12 @@ v0.1 只做：
 2. `traceme capture`
 3. `traceme run`
 4. `traceme today`
-5. 调用 OpenAI-compatible Vision API
-6. 写 JSONL
-7. 临时截图自动删除
-8. 错误时跳过并输出到 stderr
+5. `traceme daily-prompt`
+6. `traceme install` / `uninstall` / `restart`
+7. 调用 OpenAI-compatible Vision API
+8. 写 JSONL
+9. 临时截图自动删除
+10. 错误时跳过并输出到 stderr
 
 ---
 

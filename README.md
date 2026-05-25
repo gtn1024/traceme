@@ -22,15 +22,25 @@ go install github.com/gtn1024/traceme/cmd/traceme@latest
 
 ```bash
 go install github.com/gtn1024/traceme/cmd/traceme@latest
+traceme restart
 ```
 
 ## 使用
 
 ```bash
-traceme init      # 初始化配置和日志目录
-traceme capture   # 单次截图记录
-traceme run       # 持续运行（默认每 5 分钟）
-traceme today     # 查看今天的活动记录
+traceme init        # 初始化配置和日志目录
+traceme capture     # 单次截图记录
+traceme run         # 持续运行（默认每 5 分钟）
+traceme today       # 查看今天的活动记录
+traceme daily-prompt # 导出日报 prompt
+```
+
+## 开机自启
+
+```bash
+traceme install     # 注册为 launchd 服务，开机自启 + 崩溃自动重启
+traceme uninstall   # 卸载服务
+traceme restart     # 重启服务（更新后执行）
 ```
 
 ## 配置
